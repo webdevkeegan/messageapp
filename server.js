@@ -1,7 +1,7 @@
 // install all packages
 // npm i express body-parser express-session passport passport-local passport-local-mongoose dotenv
 // https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml
-
+require('dotenv').config()
 const express = require("express");
 const fs = require('fs');
 const app = express();
@@ -18,7 +18,7 @@ app.use(express.static(__dirname + "/public"));
 
 //Initialize passport
 app.use(session({
-    secret: "alongsecretonlyiknow_asdlfkhja465xzcew523",
+    secret: process.env.PASSPORT_SECRET,
     resave: false,
     saveUninitialized: false
 }));
